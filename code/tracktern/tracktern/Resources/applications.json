@@ -1,0 +1,21 @@
+[
+  {
+    "id": "1a2b3c",
+    "companyName": "Google",
+    "jobTitle": "iOS Intern",
+    "dateApplied": "2024-03-21T10:00:00Z",
+    "status": "Interview Scheduled",
+    "notes": "Interview on Zoom with recruiter",
+    "interviewDate": "2024-04-25T15:30:00Z"
+  },
+  {
+    "id": "4d5e6f",
+    "companyName": "Apple",
+    "jobTitle": "Swift Developer Intern",
+    "dateApplied": "2024-03-10T10:00:00Z",
+    "status": "Applied",
+    "notes": "",
+    "interviewDate": null
+  }
+]
+

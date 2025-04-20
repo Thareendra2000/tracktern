@@ -8,10 +8,14 @@
 import SwiftUI
 
 @main
-struct trackternApp: App {
+struct TrackternApp: App {
+    @StateObject private var viewModel = ApplicationViewModel()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainTabView()
+                .environmentObject(viewModel)
         }
     }
 }
+

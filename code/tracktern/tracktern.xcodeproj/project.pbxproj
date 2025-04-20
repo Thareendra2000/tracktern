@@ -195,6 +195,9 @@
 			);
 			mainGroup = 7947C8DA2DB2AD6300064026;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7947C9102DB2B52300064026 /* XCRemoteSwiftPackageReference "FontAwesome" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7947C8E42DB2AD6300064026 /* Products */;
 			projectDirPath = "";
@@ -552,6 +555,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7947C9102DB2B52300064026 /* XCRemoteSwiftPackageReference "FontAwesome" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/thii/FontAwesome.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 7947C8DB2DB2AD6300064026 /* Project object */;
 }
