@@ -12,20 +12,20 @@ struct StatsView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 20) {
-                Text("📊 Application Stats")
-                    .font(.title2)
-                    .padding(.bottom, 10)
+            VStack(alignment: .leading, spacing: 16) {
 
-                StatRow(title: "Total Applications", count: viewModel.applications.count)
-                StatRow(title: "Applied", count: count(for: .applied))
-                StatRow(title: "Interviews", count: count(for: .interview))
-                StatRow(title: "Offers", count: count(for: .offer))
-                StatRow(title: "Rejections", count: count(for: .rejected))
+                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                    StatCard(title: "Total Applications", icon: "doc.text", count: viewModel.applications.count, bgColor: Color.orange.opacity(0.1))
+                    StatCard(title: "Interview scheduled", icon: "video", count: count(for: .interview), bgColor: Color.gray.opacity(0.1))
+                    StatCard(title: "Offered", icon: "checkmark.circle", count: count(for: .offer), bgColor: Color.green.opacity(0.1))
+                    StatCard(title: "Rejected", icon: "xmark.circle", count: count(for: .rejected), bgColor: Color.red.opacity(0.1))
+                }
+                .padding(.horizontal)
+                .padding(.top, 4)
 
                 Spacer()
             }
-            .padding()
+            .padding(.top)
             .navigationTitle("Stats")
         }
     }
@@ -35,17 +35,31 @@ struct StatsView: View {
     }
 }
 
-struct StatRow: View {
+struct StatCard: View {
     let title: String
+    let icon: String
     let count: Int
+    let bgColor: Color
 
     var body: some View {
-        HStack {
+        VStack(alignment: .leading, spacing: 8) {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundColor(.primary)
+
             Text(title)
-            Spacer()
+                .font(.subheadline)
+                .fontWeight(.semibold)
+                .foregroundColor(.primary)
+
             Text("\(count)")
-                .bold()
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
         }
-        .padding(.vertical, 4)
+        .padding()
+        .frame(maxWidth: .infinity, minHeight: 120, alignment: .leading)
+        .background(bgColor)
+        .cornerRadius(16)
     }
 }

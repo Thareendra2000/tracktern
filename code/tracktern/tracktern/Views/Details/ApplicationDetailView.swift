@@ -48,6 +48,9 @@ struct ApplicationDetailView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
+            .background(Color.blue)
+            .foregroundColor(.white)
+            .cornerRadius(10)
         }
         .navigationTitle("Application Details")
         .navigationBarTitleDisplayMode(.inline)
