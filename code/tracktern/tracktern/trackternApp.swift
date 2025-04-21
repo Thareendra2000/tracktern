@@ -6,15 +6,18 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
-struct TrackternApp: App {
-    @StateObject private var viewModel = ApplicationViewModel()
+struct trackternApp: App {
+    init() {
+            NotificationManager.shared.requestPermission()
+    }
 
     var body: some Scene {
         WindowGroup {
-            MainTabView()
-                .environmentObject(viewModel)
+            SplashView()
+                .environmentObject(ApplicationViewModel())
         }
     }
 }

@@ -16,6 +16,10 @@ struct AddApplicationView: View {
     @State private var status: ApplicationStatus = .applied
     @State private var notes = ""
     @State private var interviewDate: Date? = nil
+    
+    @State private var showAlert = false
+    @State private var alertMessage = ""
+
 
     var body: some View {
         NavigationStack {
@@ -52,6 +56,13 @@ struct AddApplicationView: View {
                 }
 
                 Button("Add Application") {
+                    if companyName.trimmingCharacters(in: .whitespaces).isEmpty ||
+                            jobTitle.trimmingCharacters(in: .whitespaces).isEmpty {
+                            alertMessage = "Please fill in both Company Name and Job Title."
+                            showAlert = true
+                            return
+                        }
+                    
                     let newApp = Application(
                         id: UUID().uuidString,
                         companyName: companyName,
@@ -62,13 +73,23 @@ struct AddApplicationView: View {
                         interviewDate: interviewDate
                     )
                     viewModel.addApplication(newApp)
+                    if newApp.interviewDate != nil {
+                        NotificationManager.shared.scheduleInterviewNotification(for: newApp)
+                    }
                     clearForm()
+                    alertMessage = "✅ Application successfully added!"
+                        showAlert = true
                 }
                 .frame(maxWidth: .infinity)
                 .padding()
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                .alert("Alert", isPresented: $showAlert) {
+                    Button("OK", role: .cancel) { }
+                } message: {
+                    Text(alertMessage)
+                }
 
             }
             .navigationTitle("Add Application")

@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct MainTabView: View {
-    let accentBlue = Color(red: 0/255, green: 122/255, blue: 255/255)
+    let accentBlue = Color(red: 0.0, green: 0.31, blue: 0.88)
     var body: some View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "house.fill")
+                    Image(systemName: "house")
                     Text("Home")
                 }
 
             AddApplicationView()
                 .tabItem {
                     Image(systemName: "plus.circle.fill")
-                    Text("Add")
+                        .font(.system(size: 30))
+                    Text("Add Application")
                 }
 
             StatsView()
@@ -28,6 +29,6 @@ struct MainTabView: View {
                     Image(systemName: "chart.bar.fill")
                     Text("Stats")
                 }
-        }.background(Color.blue)
+        }.background(Color(accentBlue))
     }
 }

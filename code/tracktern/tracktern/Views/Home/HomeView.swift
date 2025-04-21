@@ -15,10 +15,11 @@ struct HomeView: View {
             VStack(alignment: .leading, spacing: 16) {
                 // Header with Profile Image and Name
                 HStack(spacing: 12) {
-                    Image(systemName: "person.circle")
+                    Image("profile")
                         .resizable()
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 48, height: 48)
-                        .foregroundColor(.gray)
+                        .clipShape(Circle())
 
                     VStack(alignment: .leading) {
                         Text("Hello,")
@@ -32,7 +33,16 @@ struct HomeView: View {
                 }
                 .padding(.horizontal)
 
-                ScrollView {
+                if viewModel.applications.isEmpty {
+                    VStack {
+                            Spacer()
+                            Text("No applications added yet.")
+                                .foregroundColor(.gray)
+                                .italic()
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.applications) { app in
                             NavigationLink(destination: ApplicationDetailView(application: app)) {
@@ -43,7 +53,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                     .padding(.top, 8)
-                }
+                }}
             }
         }
     }
