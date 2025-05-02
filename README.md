@@ -18,11 +18,11 @@ Tracktern is a SwiftUI-based iOS app designed to help students and job seekers t
 - **Detail View:** Shows full info for an application, allows updates to notes, status, and interview date  
 - **Stats Screen:** Summarizes how many applications are in each status
 
-<img src="https://github.com/user-attachments/assets/47ec2a6f-ea81-4521-b236-cbe60a5ffb4c" height="600" />
-<img src="https://github.com/user-attachments/assets/2184a761-6550-4ba8-b0fb-fd3c61b877ab" height="600" />
-<img src="https://github.com/user-attachments/assets/bf7716a5-869e-47f3-beac-cd59c8b170e1" height="600" />
-<img src="https://github.com/user-attachments/assets/8a5babcf-1cad-45ba-9ff3-aeb7e27d1f28" height="600" />
-<img src="https://github.com/user-attachments/assets/1e3d6298-be02-4bf5-9a6d-deb9fe04f76e" height="600" />
+<img src="./Resources/screen01.png" height="600" />
+<img src="./Resources/screen02.png" height="600" />
+<img src="./Resources/screen03.png" height="600" />
+<img src="./Resources/screen04.png" height="600" />
+<img src="./Resources/screen05.png" height="600" />
 
 
 #### 05. Give examples of best practices used when writing code
