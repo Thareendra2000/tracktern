@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ApplicationCardView: View {
     let application: Application
+    let onDelete: (String) -> Void // ✅ deletion callback
 
     var body: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -32,9 +33,18 @@ struct ApplicationCardView: View {
 
             Spacer()
 
-            Text(timeAgoString(from: application.dateApplied))
-                .font(.caption)
-                .foregroundColor(.gray)
+            VStack(alignment: .trailing, spacing: 4) {
+                Text(timeAgoString(from: application.dateApplied))
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                
+                Button(action: {
+                    onDelete(application.id) // ✅ delete logic
+                }) {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                }
+            }
         }
         .padding()
         .background(Color.white)
@@ -59,4 +69,3 @@ struct ApplicationCardView: View {
         return formatter.localizedString(for: date, relativeTo: Date())
     }
 }
-

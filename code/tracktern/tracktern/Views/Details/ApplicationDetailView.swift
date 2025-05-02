@@ -65,7 +65,7 @@ struct ApplicationDetailView: View {
         }
         .navigationTitle("Application Details")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Updated Successfully", isPresented: $showSuccessAlert) {
+        .alert("✅ Application Updated Successfully!", isPresented: $showSuccessAlert) {
             Button("OK", role: .cancel) {
                 dismiss()
             }

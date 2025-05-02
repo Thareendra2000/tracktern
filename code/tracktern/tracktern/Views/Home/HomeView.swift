@@ -46,7 +46,10 @@ struct HomeView: View {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.applications) { app in
                             NavigationLink(destination: ApplicationDetailView(application: app)) {
-                                ApplicationCardView(application: app)
+                                ApplicationCardView(application: app) { id in
+                                    viewModel.deleteApplication(id: id)
+                                }
+
                             }
                             .buttonStyle(PlainButtonStyle())
                         }

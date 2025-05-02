@@ -78,7 +78,7 @@ struct AddApplicationView: View {
                         NotificationManager.shared.scheduleInterviewNotification(for: newApp)
                     }
                     clearForm()
-                    alertMessage = "✅ Application successfully added!"
+                    alertMessage = "✅ Application Successfully Added!"
                         showAlert = true
                 }
                 .frame(maxWidth: .infinity)
