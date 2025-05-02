@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AddApplicationView: View {
     @EnvironmentObject var viewModel: ApplicationViewModel
+    @Environment(\.dismiss) private var dismiss
 
     @State private var companyName = ""
     @State private var jobTitle = ""
@@ -86,7 +87,9 @@ struct AddApplicationView: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .alert("Alert", isPresented: $showAlert) {
-                    Button("OK", role: .cancel) { }
+                    Button("OK", role: .cancel) {
+                        dismiss()
+                    }
                 } message: {
                     Text(alertMessage)
                 }

@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ApplicationDetailView: View {
     @EnvironmentObject var viewModel: ApplicationViewModel
+    @Environment(\.dismiss) private var dismiss
     @State var application: Application
+    @State private var showSuccessAlert = false
 
     var body: some View {
         Form {
@@ -34,9 +36,17 @@ struct ApplicationDetailView: View {
                 Text(application.dateApplied.formatted(date: .abbreviated, time: .omitted))
             }
 
-            Section(header: Text("Interview Date")) {
-                DatePicker(selection: /*@START_MENU_TOKEN@*/.constant(Date())/*@END_MENU_TOKEN@*/, label: { Text("Interview Date") })
+            Section(header: Text("Interview Date & Time")) {
+                DatePicker("Interview Date & Time", selection: Binding(
+                    get: {
+                        application.interviewDate ?? Date()
+                    },
+                    set: { newDate in
+                        application.interviewDate = newDate
+                    }
+                ), displayedComponents: [.date, .hourAndMinute])
             }
+
 
             Section(header: Text("Notes")) {
                 TextEditor(text: $application.notes)
@@ -45,6 +55,7 @@ struct ApplicationDetailView: View {
 
             Button("Save Changes") {
                 viewModel.updateApplication(application)
+                showSuccessAlert = true
             }
             .frame(maxWidth: .infinity)
             .padding()
@@ -54,5 +65,10 @@ struct ApplicationDetailView: View {
         }
         .navigationTitle("Application Details")
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Updated Successfully", isPresented: $showSuccessAlert) {
+            Button("OK", role: .cancel) {
+                dismiss()
+            }
+        }
     }
 }
